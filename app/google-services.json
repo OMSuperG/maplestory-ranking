@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "385465532617",
+    "project_id": "ranking-for-maplestory",
+    "storage_bucket": "ranking-for-maplestory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385465532617:android:a7b53af411c03d751c4d18",
+        "android_client_info": {
+          "package_name": "com.omsuperg.msranking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385465532617-67v5phq0ptej279l0pnopjh3n430bh9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZIDgcoFRhUOZbzgYqUFLfgidFTC9fwgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385465532617-67v5phq0ptej279l0pnopjh3n430bh9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
