@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.llollox.androidtoggleswitch.widgets.ToggleSwitch
 import com.omsuperg.msranking.R
 import com.omsuperg.msranking.databinding.MainFragmentBinding
 
@@ -33,6 +34,13 @@ class MainFragment : Fragment() {
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.serverSelector.setCheckedPosition(0)
+        binding.serverSelector.onChangeListener = object : ToggleSwitch.OnChangeListener {
+            override fun onToggleSwitchChanged(position: Int) {
+                viewModel.setServer(position)
+            }
+        }
         return binding.root
     }
 }

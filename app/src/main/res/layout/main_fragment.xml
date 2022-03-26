@@ -97,5 +97,17 @@
             android:src="@drawable/ic_share"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:toggleMargin="8dp"
+            android:id="@+id/server_selector"
+            app:layout_constraintBottom_toTopOf="@+id/ivCharacter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilCharacterName"
+            app:textToggleLeft="GMS"
+            app:textToggleRight="EMS" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

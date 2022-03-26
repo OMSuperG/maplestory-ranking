@@ -22,10 +22,11 @@ import java.io.File
 class MainViewModel : ViewModel() {
 
     val character: MutableLiveData<CharacterData> = MutableLiveData()
+    private var server = servers[0]
 
     private fun getInfo(characterName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val request = Api.getApiService().getCharacterInfo("gms", characterName)
+            val request = Api.getApiService().getCharacterInfo(server, characterName)
             if (request.isSuccessful) {
                 character.postValue(request.body()?.characterData)
             }
@@ -44,7 +45,10 @@ class MainViewModel : ViewModel() {
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         val nameOfFile: String = character.value?.name + ".png"
 
-        val f = File(Environment.getExternalStorageDirectory().toString() + "/" + Environment.DIRECTORY_PICTURES)
+        val f = File(
+            Environment.getExternalStorageDirectory()
+                .toString() + "/" + Environment.DIRECTORY_PICTURES
+        )
 
         if (!f.exists()) {
             f.mkdirs()
@@ -68,5 +72,13 @@ class MainViewModel : ViewModel() {
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(view.context, shareIntent, null)
+    }
+
+    fun setServer(position: Int) {
+        server = servers[position]
+    }
+
+    companion object {
+        private val servers = arrayOf("gms", "ems")
     }
 }
