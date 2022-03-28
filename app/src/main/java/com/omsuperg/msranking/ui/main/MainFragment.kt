@@ -41,6 +41,9 @@ class MainFragment : Fragment() {
                 viewModel.setServer(position)
             }
         }
+        binding.tilCharacterName.setEndIconOnClickListener {
+            viewModel.onEditorAction(binding.etCharacter.text.toString())
+        }
         return binding.root
     }
 }

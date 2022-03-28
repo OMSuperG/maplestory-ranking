@@ -19,12 +19,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilCharacterName"
             android:layout_width="match_parent"
+            app:endIconDrawable="@drawable/ic_search"
+            app:endIconMode="custom"
             android:layout_height="wrap_content"
             android:hint="Character Name"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
+                android:id="@+id/etCharacter"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionSearch"
                 android:onEditorAction="@{(view,actionId,event) -> viewModel.onEditorAction(view.text)}"
