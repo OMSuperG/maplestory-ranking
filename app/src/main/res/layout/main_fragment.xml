@@ -109,5 +109,15 @@
             app:layout_constraintTop_toBottomOf="@+id/tilCharacterName"
             app:textToggleLeft="GMS"
             app:textToggleRight="EMS" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.loading}"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toTopOf="@+id/tvLevel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/server_selector" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

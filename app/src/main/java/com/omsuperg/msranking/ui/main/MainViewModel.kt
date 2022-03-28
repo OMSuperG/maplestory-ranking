@@ -15,21 +15,27 @@ import com.omsuperg.msranking.model.levelWithPercent
 import com.omsuperg.msranking.model.ranks
 import com.omsuperg.msranking.service.Api
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.File
-
 
 class MainViewModel : ViewModel() {
 
     val character: MutableLiveData<CharacterData> = MutableLiveData()
     private var server = servers[0]
+    private val _loading = MutableStateFlow(View.GONE)
+    val loading = _loading.asStateFlow()
 
     private fun getInfo(characterName: String) {
+        _loading.update { View.VISIBLE }
         viewModelScope.launch(Dispatchers.IO) {
             val request = Api.getApiService().getCharacterInfo(server, characterName)
             if (request.isSuccessful) {
                 character.postValue(request.body()?.characterData)
             }
+            _loading.update { View.GONE }
         }
     }
 
