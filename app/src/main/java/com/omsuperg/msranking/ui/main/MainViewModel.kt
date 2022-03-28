@@ -25,8 +25,12 @@ class MainViewModel : ViewModel() {
 
     val character: MutableLiveData<CharacterData> = MutableLiveData()
     private var server = servers[0]
+
     private val _loading = MutableStateFlow(View.GONE)
     val loading = _loading.asStateFlow()
+
+    private val _errorMessage = MutableStateFlow("")
+    val errorMessage = _errorMessage.asStateFlow()
 
     private fun getInfo(characterName: String) {
         _loading.update { View.VISIBLE }
@@ -34,6 +38,9 @@ class MainViewModel : ViewModel() {
             val request = Api.getApiService().getCharacterInfo(server, characterName)
             if (request.isSuccessful) {
                 character.postValue(request.body()?.characterData)
+                _errorMessage.update { "" }
+            } else {
+                _errorMessage.update { "$characterName was not found on ${server.uppercase()}" }
             }
             _loading.update { View.GONE }
         }
